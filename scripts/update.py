@@ -45,7 +45,8 @@ def main():
                 if not link.startswith('https://') or not title: continue
                 key=hashlib.sha256(link.encode()).hexdigest()[:20]
                 if key in seen: continue
-                if not any(term in title.lower() for term in ('estate','wagon','avant','tourer','touring')): continue
+                if not any(term in title.lower() for term in ('estate','wagon','avant','tourer','touring','volvo 850','volvo 940')): continue
+                if any(term in title.lower() for term in ('breaking','spares','parts only','wheel set','roof rack','model car','toy car')): continue
                 year_match=re.search(r'\b(19[789]\d|20[012]\d)\b',title)
                 price_match=re.search(r'£\s*([\d,]+)',title)
                 price=int(price_match.group(1).replace(',','')) if price_match else None
