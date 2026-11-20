@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Import permitted RSS/Atom feeds
         run: python3 scripts/update.py
+      - name: Check explicitly approved public pages
+        run: python3 scripts/collect_pages.py
       - name: Commit new discoveries
         run: |
           if ! git diff --quiet -- data/listings.json; then
